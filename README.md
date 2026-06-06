@@ -1,0 +1,1 @@
+zde je dokumentace kodu
