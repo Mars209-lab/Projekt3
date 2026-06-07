@@ -1,0 +1,22 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="InventarniSystem.Views.HistorieWindow"
+        Width="620" Height="420"
+        WindowStartupLocation="CenterOwner"
+        Title="Historie změn">
+
+    <Grid RowDefinitions="*,Auto" Margin="12">
+        <DataGrid Grid.Row="0" x:Name="Tabulka" IsReadOnly="True"
+                  GridLinesVisibility="Horizontal">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Čas"     Binding="{Binding CasText}" Width="160"/>
+                <DataGridTextColumn Header="Akce"    Binding="{Binding Akce}"    Width="100"/>
+                <DataGridTextColumn Header="Položka" Binding="{Binding Polozka}" Width="*"/>
+                <DataGridTextColumn Header="Detail"  Binding="{Binding Detail}"  Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="1" Content="Zavřít" Click="Zavrit_Click"
+                HorizontalAlignment="Right" Margin="0,8,0,0"/>
+    </Grid>
+</Window>
