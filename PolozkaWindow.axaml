@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="InventarniSystem.Views.PolozkaWindow"
+        Width="400" Height="340"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Title="Položka">
+
+    <StackPanel Margin="16" Spacing="6">
+        <TextBlock Text="Název:"/>
+        <TextBox x:Name="NazevBox"/>
+
+        <TextBlock Text="Kategorie:"/>
+        <TextBox x:Name="KategorieBox"/>
+
+        <TextBlock Text="Počet kusů:"/>
+        <TextBox x:Name="PocetBox"/>
+
+        <TextBlock Text="Minimální stav (hranice upozornění):"/>
+        <TextBox x:Name="MinBox"/>
+
+        <!-- Sem se vypíše případná chyba z validace -->
+        <TextBlock x:Name="ChybaText" Foreground="Red" TextWrapping="Wrap" Margin="0,4,0,0"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"
+                    Spacing="8" Margin="0,8,0,0">
+            <Button Content="Uložit" Click="Ulozit_Click"/>
+            <Button Content="Zrušit" Click="Zrusit_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
