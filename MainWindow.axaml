@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="InventarniSystem.Views.MainWindow"
+        Width="840" Height="580"
+        Title="Inventární systém">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Margin="12">
+
+        <!-- Řádek 1: vyhledávání a filtr kategorie -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto" Margin="0,0,0,8">
+            <TextBox Grid.Column="0" x:Name="HledatBox"
+                     Watermark="Hledat podle názvu..."
+                     TextChanged="Hledat_Zmena"/>
+            <TextBlock Grid.Column="1" Text="Kategorie:"
+                       VerticalAlignment="Center" Margin="12,0,6,0"/>
+            <ComboBox Grid.Column="2" x:Name="KategorieBox" MinWidth="170"
+                      SelectionChanged="Kategorie_Zmena"/>
+        </Grid>
+
+        <!-- Řádek 2: tlačítka -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="6" Margin="0,0,0,8">
+            <Button Content="Přidat" Click="Pridat_Click"/>
+            <Button Content="Upravit" Click="Upravit_Click"/>
+            <Button Content="Smazat" Click="Smazat_Click"/>
+            <Border Width="1" Background="#CCCCCC" Margin="6,2"/>
+            <Button Content="Historie změn" Click="Historie_Click"/>
+            <Button Content="Export do TXT" Click="Export_Click"/>
+            <Button Content="Import z TXT" Click="Import_Click"/>
+        </StackPanel>
+
+        <!-- Řádek 3: tabulka položek -->
+        <DataGrid Grid.Row="2" x:Name="Tabulka"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  GridLinesVisibility="Horizontal">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Název"     Binding="{Binding Nazev}"         Width="*"/>
+                <DataGridTextColumn Header="Kategorie" Binding="{Binding Kategorie}"     Width="170"/>
+                <DataGridTextColumn Header="Počet"     Binding="{Binding Pocet}"         Width="80"/>
+                <DataGridTextColumn Header="Min. stav" Binding="{Binding MinimalniStav}" Width="90"/>
+                <DataGridTextColumn Header="Stav"      Binding="{Binding Stav}"          Width="130"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Řádek 4: stavový řádek (počet + upozornění na nízký stav) -->
+        <TextBlock Grid.Row="3" x:Name="StavovyRadek" Margin="0,8,0,0" FontWeight="SemiBold"/>
+    </Grid>
+</Window>
